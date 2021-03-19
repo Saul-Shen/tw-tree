@@ -34,7 +34,8 @@ const TwTree = defineComponent({
           <div class="is-left" style={leftTreeStyle}>
             <TwTreeLink
               position="is-left"
-              width={leftTree?.twTreeAttrs?.paddingChildren}
+              width={leftTree.twTreeAttrs?.paddingChildren}
+              color={leftTree.twTreeAttrs?.linkColor}
             />
             {leftTree.children.map((node: any) => (
               <TwTreeNode position="is-left" v-slots={this.$slots} {...node} />
@@ -53,7 +54,8 @@ const TwTree = defineComponent({
           <div class="is-right" style={rightTreeStyle}>
             <TwTreeLink
               position="is-right"
-              width={rightTree?.twTreeAttrs?.paddingChildren}
+              width={rightTree.twTreeAttrs?.paddingChildren}
+              color={rightTree.twTreeAttrs?.linkColor}
             />
             {rightTree.children.map((node: any) => (
               <TwTreeNode position="is-right" v-slots={this.$slots} {...node} />

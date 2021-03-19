@@ -1,11 +1,26 @@
 <template>
   <tw-tree class="my-tree" :left-tree="leftTree" :right-tree="rightTree">
     <template #label="props">
-      <div v-if="props.isRoot" class="root-label">
+      <div v-if="props.isRoot" class="label root-label">
         {{ props.label }}
       </div>
-      <div v-else class="label">
-        {{ props.node.label }}
+
+      <div v-if="props.node?.type === '股东'" class="label gudong-label">
+        <span>{{ props.node.label }}</span>
+        <i class="el-icon-caret-right arrow" />
+      </div>
+
+      <div v-if="props.node?.type === '公司'" class="label gongsi-label">
+        <span>{{ props.node.label }}</span>
+        <span class="per">{{ props.node.per }}</span>
+      </div>
+
+      <div v-if="props.node?.type === '高管'" class="label gaoguang-label">
+        <span>{{ props.node.label }}</span>
+      </div>
+
+      <div v-if="props.node?.type === '成员'" class="label chengyuan-label">
+        <span>{{ props.node.label }}</span>
       </div>
     </template>
   </tw-tree>
@@ -17,37 +32,69 @@ import TwTree from "./components/tw-tree";
 
 export default defineComponent({
   name: "App",
+
   components: {
     TwTree,
   },
 
   data() {
     const tree1 = {
-      label: "Owner",
+      label: "才华有限公司",
       twTreeAttrs: {
-        paddingChildren: "30px",
+        linkColor: "red",
       },
       children: [
         {
-          label: "Label 1",
+          type: "股东",
+          label: "股东1",
           twTreeAttrs: {
-            paddingParent: "40px",
-            paddingChildren: "80px",
+            paddingParent: "100px",
+            linkColor: "red",
           },
           children: [
             {
-              label: "1-1",
+              type: "公司",
+              label: "公司1",
+              per: "50.00%",
+              twTreeAttrs: {
+                paddingParent: "100px",
+              },
             },
             {
-              label: "1-2",
+              type: "公司",
+              label: "公司2",
+              per: "50.00%",
+              twTreeAttrs: {
+                paddingParent: "100px",
+              },
             },
           ],
         },
+
         {
-          label: "Label 2",
-        },
-        {
-          label: "Label 3",
+          type: "股东",
+          label: "股东1",
+          twTreeAttrs: {
+            paddingParent: "100px",
+          },
+          children: [
+            {
+              type: "公司",
+              label: "公司1",
+              per: "50.00%",
+              twTreeAttrs: {
+                paddingParent: "100px",
+              },
+            },
+            {
+              type: "公司",
+              label: "公司2",
+              per: "50.00%",
+              twTreeAttrs: {
+                paddingParent: "100px",
+              },
+            },
+          ],
         },
       ],
     };
@@ -56,15 +103,15 @@ export default defineComponent({
       label: "Owner",
       children: [
         {
-          twTreeAttrs: {
-            paddingParent: "100px",
-            paddingChildren: "80px",
-          },
-          label: "Label 1",
-          children: [],
-        },
-        {
-          label: "Label 3",
+          type: "高管",
+          label: "高管1",
+          twTreeAttrs: {},
+          children: [
+            {
+              type: "成员",
+              label: "成员1",
+            },
+          ],
         },
       ],
     };
@@ -99,13 +146,28 @@ export default defineComponent({
 
     .root-label {
       background: lightblue;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      padding: 10px 15px;
-      text-align: center;
-      border-radius: 3px;
-      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+    }
+
+    .gudong-label {
+      position: relative;
+
+      .arrow {
+        position: absolute;
+        right: -30px;
+        color: lightblue;
+      }
+    }
+
+    .gongsi-label {
+      position: relative;
+
+      .per {
+        position: absolute;
+        right: -65px;
+        top: calc(50% - 16px);
+        font-size: 12px;
+        color: orange;
+      }
     }
   }
 }

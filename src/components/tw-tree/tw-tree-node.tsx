@@ -4,6 +4,8 @@ import TwTreeLink from "./tw-tree-link";
 import { getPaddingStyle, cls } from "./util";
 
 const TwTreeNode = defineComponent({
+  inheritAttrs: false,
+
   props: {
     position: String,
 
@@ -56,7 +58,7 @@ const TwTreeNode = defineComponent({
         <TwTreeLabel
           v-slots={this.$slots}
           label={label}
-          node={{ label, children, twTreeAttrs }}
+          node={{ ...this.$props, ...this.$attrs }}
           isExpanded={this.isExpanded}
           ifCanExpand={this.ifCanExpand}
           onClickExpand={this.onClickExpand}

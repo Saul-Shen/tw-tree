@@ -4,11 +4,16 @@ import { cls } from "./util";
 export default defineComponent({
   props: {
     width: String,
+    color: String,
     position: String,
   },
 
   render() {
-    const { position = "is-left", width = "20px" } = this.$props;
+    const {
+      position = "is-left",
+      width = "20px",
+      color = "#ddd",
+    } = this.$props;
 
     const isLeft = position === "is-left";
 
@@ -18,7 +23,7 @@ export default defineComponent({
           "left-tree-link": isLeft,
           "right-tree-link": !isLeft,
         })}
-        style={{ width }}
+        style={{ width, background: color }}
       />
     );
   },
