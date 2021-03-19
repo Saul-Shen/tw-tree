@@ -1,0 +1,236 @@
+.sf-tree {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+
+  .left-tree {
+    position: relative;
+    padding-right: 20px;
+
+    .link {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      display: block;
+      width: 20px;
+      height: 1px;
+      background: #ddd;
+    }
+  }
+
+  .right-tree {
+    position: relative;
+    padding-left: 20px;
+
+    .link {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      display: block;
+      width: 20px;
+      height: 1px;
+      background: #ddd;
+    }
+  }
+
+  .is-right {
+    // 从左往右 ---------------------------------------------------
+    &.tree-node {
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding-left: 20px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+
+      &:nth-of-type(1) > .line-top {
+        width: 0;
+      }
+
+      &:last-child > .line-bottom {
+        width: 0;
+      }
+
+      .line-top {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 1px;
+        height: 50%;
+        background: #ddd;
+      }
+
+      .line-middle {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        display: block;
+        width: 20px;
+        height: 1px;
+        background: #ddd;
+      }
+
+      .line-bottom {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        display: block;
+        width: 1px;
+        height: 50%;
+        background: #ddd;
+      }
+    }
+
+    &.tree-label {
+      .inner-label {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        padding: 10px 15px;
+        text-align: center;
+        border-radius: 3px;
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+
+        .expand-icon {
+          cursor: pointer;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 15px;
+          height: 15px;
+          border-radius: 50%;
+          border: 1px solid black;
+          margin-left: 5px;
+        }
+      }
+    }
+
+    &.tree-children {
+      position: relative;
+      padding-left: 20px;
+
+      .link {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        display: block;
+        width: 20px;
+        height: 1px;
+        background: #ddd;
+      }
+    }
+  }
+
+  .is-middle {
+    &.tree-label {
+      .inner-label {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        padding: 10px 15px;
+        text-align: center;
+        border-radius: 3px;
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+      }
+    }
+  }
+
+  // 翻转 ---------------------------
+  .is-left {
+    flex-direction: row-reverse;
+
+    &.tree-node {
+      position: relative;
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+      padding-right: 20px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+
+      &:nth-of-type(1) > .line-top {
+        width: 0;
+      }
+
+      &:last-child > .line-bottom {
+        width: 0;
+      }
+
+      .line-top {
+        position: absolute;
+        top: 0;
+        left: 100%;
+        right: 0;
+        display: block;
+        width: 1px;
+        height: 50%;
+        background: #ddd;
+      }
+
+      .line-middle {
+        position: absolute;
+        top: 50%;
+        left: calc(100% - 20px);
+        right: 0;
+        display: block;
+        width: 20px;
+        height: 1px;
+        background: #ddd;
+      }
+
+      .line-bottom {
+        position: absolute;
+        top: 50%;
+        left: 100%;
+        right: 0;
+        display: block;
+        width: 1px;
+        height: 50%;
+        background: #ddd;
+      }
+    }
+
+    &.tree-label {
+      .inner-label {
+        cursor: pointer;
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        padding: 10px 15px;
+        text-align: center;
+        border-radius: 3px;
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+
+        .expand-icon {
+          cursor: pointer;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 15px;
+          height: 15px;
+          border-radius: 50%;
+          border: 1px solid black;
+          margin: 0 5px;
+        }
+      }
+    }
+
+    &.tree-children {
+      position: relative;
+      padding-right: 20px;
+
+      .link {
+        position: absolute;
+        top: 50%;
+        left: calc(100% - 20px);
+        right: 0;
+        display: block;
+        width: 20px;
+        height: 1px;
+        background: #ddd;
+      }
+    }
+  }
+}
