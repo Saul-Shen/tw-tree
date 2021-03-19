@@ -9,6 +9,7 @@ export default defineComponent({
     onClickExpand: Function,
     position: String,
     isRoot: Boolean,
+    node: Object,
   },
 
   methods: {
@@ -20,16 +21,21 @@ export default defineComponent({
   },
 
   render() {
-    const { position, isRoot, label, ifCanExpand, isExpanded } = this.$props;
+    const {
+      position,
+      isRoot = false,
+      label,
+      ifCanExpand,
+      isExpanded,
+      node,
+    } = this.$props;
 
-    const { nodeLabel, rootLabel } = this.$slots;
-
-    const $labelSlot = isRoot ? rootLabel : nodeLabel;
+    const $labelSlot = this.$slots.label;
 
     return (
       <div class={cls("tree-label", position)}>
         {$labelSlot ? (
-          $labelSlot({ name: label })
+          $labelSlot({ node: node, label: label, isRoot })
         ) : (
           <div class="inner-label">
             <span>{label}</span>

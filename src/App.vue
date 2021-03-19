@@ -1,10 +1,12 @@
 <template>
   <tw-tree class="my-tree" :left-tree="leftTree" :right-tree="rightTree">
-    <template #rootLabel="props">
-      <div class="label">{{ props.name }}</div>
-    </template>
-    <template #nodeLabel="props">
-      <div class="label">{{ props.name }}</div>
+    <template #label="props">
+      <div v-if="props.isRoot" class="root-label">
+        {{ props.label }}
+      </div>
+      <div v-else class="label">
+        {{ props.node.label }}
+      </div>
     </template>
   </tw-tree>
 </template>
@@ -86,6 +88,17 @@ export default defineComponent({
 
   .my-tree {
     .label {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      padding: 10px 15px;
+      text-align: center;
+      border-radius: 3px;
+      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+    }
+
+    .root-label {
+      background: lightblue;
       cursor: pointer;
       display: flex;
       align-items: center;

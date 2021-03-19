@@ -56,6 +56,7 @@ const TwTreeNode = defineComponent({
         <TwTreeLabel
           v-slots={this.$slots}
           label={label}
+          node={{ label, children, twTreeAttrs }}
           isExpanded={this.isExpanded}
           ifCanExpand={this.ifCanExpand}
           onClickExpand={this.onClickExpand}
