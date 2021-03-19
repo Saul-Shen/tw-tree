@@ -1,4 +1,5 @@
 import { defineComponent } from "vue";
+import { cls } from "./util";
 
 export default defineComponent({
   props: {
@@ -19,25 +20,23 @@ export default defineComponent({
   },
 
   render() {
-    const cls = ["tree-label"];
-
-    cls.push(this.position as string);
+    const { position, isRoot, label, ifCanExpand, isExpanded } = this.$props;
 
     const { nodeLabel, rootLabel } = this.$slots;
 
-    const $labelSlot = this.isRoot ? rootLabel : nodeLabel;
+    const $labelSlot = isRoot ? rootLabel : nodeLabel;
 
     return (
-      <div class={cls.join(" ")}>
+      <div class={cls("tree-label", position)}>
         {$labelSlot ? (
-          $labelSlot({ name: this.label })
+          $labelSlot({ name: label })
         ) : (
           <div class="inner-label">
-            <span>{this.label}</span>
+            <span>{label}</span>
 
-            {this.ifCanExpand && (
+            {ifCanExpand && (
               <span class="expand-icon" onClick={this.onClick}>
-                {this.isExpanded ? "-" : "+"}
+                {isExpanded ? "-" : "+"}
               </span>
             )}
           </div>

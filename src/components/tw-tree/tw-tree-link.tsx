@@ -1,16 +1,25 @@
 import { defineComponent } from "vue";
+import { cls } from "./util";
 
 export default defineComponent({
   props: {
-    width: Number,
+    width: String,
     position: String,
   },
 
   render() {
-    const { position = "is-left" } = this.$props;
+    const { position = "is-left", width = "20px" } = this.$props;
 
-    const cls = position === "is-left" ? "left-tree-link" : "right-tree-link";
+    const isLeft = position === "is-left";
 
-    return <span class={cls} />;
+    return (
+      <span
+        class={cls({
+          "left-tree-link": isLeft,
+          "right-tree-link": !isLeft,
+        })}
+        style={{ width }}
+      />
+    );
   },
 });

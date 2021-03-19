@@ -9,7 +9,6 @@
     top: 50%;
     right: 0;
     display: block;
-    width: 20px;
     height: 1px;
     background: #ddd;
   }
@@ -19,22 +18,13 @@
     top: 50%;
     left: 0;
     display: block;
-    width: 20px;
     height: 1px;
     background: #ddd;
   }
 
-  .left-tree {
-    position: relative;
-    padding-right: 20px;
-  }
-
-  .right-tree {
-    position: relative;
-    padding-left: 20px;
-  }
-
   .is-right {
+    position: relative;
+
     // 从左往右 ---------------------------------------------------
     &.tree-node {
       position: relative;
@@ -96,11 +86,6 @@
         }
       }
     }
-
-    &.tree-children {
-      position: relative;
-      padding-left: 20px;
-    }
   }
 
   .is-middle {
@@ -119,6 +104,7 @@
 
   // 翻转 ---------------------------
   .is-left {
+    position: relative;
     flex-direction: row-reverse;
 
     &.tree-node {
@@ -184,11 +170,6 @@
           margin: 0 5px;
         }
       }
-    }
-
-    &.tree-children {
-      position: relative;
-      padding-right: 20px;
     }
   }
 }

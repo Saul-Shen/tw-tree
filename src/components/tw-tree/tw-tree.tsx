@@ -2,46 +2,61 @@ import { defineComponent } from "vue";
 import TwTreeLabel from "./tw-tree-label";
 import TwTreeNode from "./tw-tree-node";
 import TwTreeLink from "./tw-tree-link";
+import { getPaddingStyle } from "./util";
 
 const TwTree = defineComponent({
   props: {
     leftTree: Object,
     rightTree: Object,
-    linkWidth: Number, // node连接线的长度
   },
 
   render() {
-    const { leftTree = {}, rightTree = {}, linkWidth = 20 } = this.$props;
+    const { leftTree = {}, rightTree = {} } = this.$props;
 
     const ifShowLeftTree = leftTree.children && leftTree.children.length > 0;
     const ifShowRightTree = rightTree.children && rightTree.children.length > 0;
 
     const rootLabel = leftTree.label || rightTree.label;
 
+    const leftTreeStyle = getPaddingStyle(
+      "is-left",
+      leftTree?.twTreeAttrs?.paddingChildren
+    );
+
+    const rightTreeStyle = getPaddingStyle(
+      "is-right",
+      rightTree?.twTreeAttrs?.paddingChildren
+    );
+
     return (
       <div class="tw-tree">
         {ifShowLeftTree && (
-          <div class="left-tree is-left">
-            <span class="link" />
-            <TwTreeLink position="is-left" />
+          <div class="is-left" style={leftTreeStyle}>
+            <TwTreeLink
+              position="is-left"
+              width={leftTree?.twTreeAttrs?.paddingChildren}
+            />
             {leftTree.children.map((node: any) => (
-              <TwTreeNode v-slots={this.$slots} {...node} position="is-left" />
+              <TwTreeNode position="is-left" v-slots={this.$slots} {...node} />
             ))}
           </div>
         )}
 
         <TwTreeLabel
           isRoot
-          v-slots={this.$slots}
           position="is-middle"
+          v-slots={this.$slots}
           label={rootLabel}
         />
 
         {ifShowRightTree && (
-          <div class="right-tree is-right">
-            <TwTreeLink position="is-right" />
+          <div class="is-right" style={rightTreeStyle}>
+            <TwTreeLink
+              position="is-right"
+              width={rightTree?.twTreeAttrs?.paddingChildren}
+            />
             {rightTree.children.map((node: any) => (
-              <TwTreeNode v-slots={this.$slots} {...node} position="is-right" />
+              <TwTreeNode position="is-right" v-slots={this.$slots} {...node} />
             ))}
           </div>
         )}

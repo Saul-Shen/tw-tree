@@ -22,9 +22,16 @@ export default defineComponent({
   data() {
     const tree1 = {
       label: "Owner",
+      twTreeAttrs: {
+        paddingChildren: "30px",
+      },
       children: [
         {
           label: "Label 1",
+          twTreeAttrs: {
+            paddingParent: "40px",
+            paddingChildren: "80px",
+          },
           children: [
             {
               label: "1-1",
@@ -47,6 +54,10 @@ export default defineComponent({
       label: "Owner",
       children: [
         {
+          twTreeAttrs: {
+            paddingParent: "100px",
+            paddingChildren: "80px",
+          },
           label: "Label 1",
           children: [],
         },
