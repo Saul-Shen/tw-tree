@@ -6,11 +6,40 @@
       </div>
 
       <div v-if="props.node?.type === '股东'" class="label gudong-label">
+        <template v-if="props.node.children.length > 0">
+          <i
+            v-if="props.node.twAttrs?.collapse"
+            class="el-icon-circle-plus-outline"
+            @click="onCollapse(props.node.id)"
+          />
+          <i
+            v-else
+            class="el-icon-remove-outline"
+            @click="onCollapse(props.node.id)"
+          />
+        </template>
+        <i
+          v-if="props.node.children > 0 && props.node.collapse"
+          class="el-icon-circle-plus-outline"
+          @click="onCollapse(props.node.id)"
+        />
         <span>{{ props.node.label }}</span>
         <i class="el-icon-caret-right arrow" />
       </div>
 
       <div v-if="props.node?.type === '公司'" class="label gongsi-label">
+        <template v-if="props.node.children.length > 0">
+          <i
+            v-if="props.node.twAttrs?.collapse"
+            class="el-icon-circle-plus-outline"
+            @click="onCollapse(props.node.id)"
+          />
+          <i
+            v-else
+            class="el-icon-remove-outline"
+            @click="onCollapse(props.node.id)"
+          />
+        </template>
         <span>{{ props.node.label }}</span>
         <span class="per">{{ props.node.per }}</span>
       </div>
@@ -29,116 +58,40 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import TwTree from "../src";
+import { leftTree, rightTree } from "./data";
+
+function traTree(tree: any, id: string, fn: Function) {
+  if (tree.id == id) {
+    fn(tree);
+  } else {
+    if (tree.children && tree.children.length > 0) {
+      tree.children.forEach((subTree: any) => traTree(subTree, id, fn));
+    }
+  }
+}
 
 export default defineComponent({
-  name: "App",
-
   components: {
     TwTree,
   },
 
   data() {
-    const tree1 = {
-      label: "才华有限公司",
-      twAttrs: {
-        childrenLink: {
-          width: "50px",
-          color: "yellow",
-        },
-      },
-      children: [
-        {
-          type: "股东",
-          label: "股东1",
-          twAttrs: {
-            parentLink: {
-              width: "100px",
-              color: "red",
-            },
-            childrenLink: {
-              width: "50px",
-              color: "yellow",
-            },
-          },
-          children: [
-            {
-              type: "公司",
-              label: "公司1",
-              per: "50.00%",
-              twAttrs: {
-                parentLink: {
-                  width: "100px",
-                },
-              },
-            },
-            {
-              type: "公司",
-              label: "公司2",
-              per: "50.00%",
-              twAttrs: {
-                parentLink: {
-                  width: "100px",
-                },
-              },
-            },
-          ],
-        },
-
-        {
-          type: "股东",
-          label: "股东1",
-          twAttrs: {
-            parentLink: {
-              width: "100px",
-            },
-          },
-          children: [
-            {
-              type: "公司",
-              label: "公司1",
-              per: "50.00%",
-              twAttrs: {
-                parentLink: {
-                  width: "100px",
-                },
-              },
-            },
-            {
-              type: "公司",
-              label: "公司2",
-              per: "50.00%",
-              twAttrs: {
-                parentLink: {
-                  width: "100px",
-                },
-              },
-            },
-          ],
-        },
-      ],
-    };
-
-    const tree2 = {
-      label: "Owner",
-      children: [
-        {
-          type: "高管",
-          label: "高管1",
-          twAttrs: {},
-          children: [
-            {
-              type: "成员",
-              label: "成员1",
-            },
-          ],
-        },
-      ],
-    };
-
     return {
-      leftTree: tree1,
-      rightTree: tree2,
+      leftTree,
+      rightTree,
     };
+  },
+
+  methods: {
+    onCollapse(id: string) {
+      traTree(this.leftTree, id, (tree: any) => {
+        tree.twAttrs.collapse = !tree.twAttrs.collapse;
+      });
+
+      traTree(this.rightTree, id, (tree: any) => {
+        tree.twAttrs.collapse = !tree.twAttrs.collapse;
+      });
+    },
   },
 });
 </script>

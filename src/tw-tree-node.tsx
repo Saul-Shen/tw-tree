@@ -20,7 +20,8 @@ const TwTreeNode = defineComponent({
   render() {
     const { label, children, position, twAttrs } = this.$props;
 
-    const ifShowChildren = children && children.length > 0;
+    const ifShowChildren =
+      !twAttrs?.collapse && children && children.length > 0;
 
     const parentStyle = getPadding(position, twAttrs?.parentLink?.width);
 
