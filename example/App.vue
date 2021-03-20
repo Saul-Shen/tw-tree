@@ -1,10 +1,12 @@
 <template>
   <tw-tree class="my-tree" :left-tree="leftTree" :right-tree="rightTree">
     <template #label="props">
+      <!-- render root label, custom render for different type node  -->
       <div v-if="props.isRoot" class="label root-label">
         {{ props.label }}
       </div>
 
+      <!-- render 股东 label -->
       <div v-if="props.node?.type === '股东'" class="label gudong-label">
         <template v-if="props.node.children.length > 0">
           <i
@@ -27,6 +29,7 @@
         <i class="el-icon-caret-right arrow" />
       </div>
 
+      <!-- render 公司 label -->
       <div v-if="props.node?.type === '公司'" class="label gongsi-label">
         <template v-if="props.node.children.length > 0">
           <i
@@ -44,10 +47,12 @@
         <span class="per">{{ props.node.per }}</span>
       </div>
 
+      <!-- render 高管 label -->
       <div v-if="props.node?.type === '高管'" class="label gaoguang-label">
         <span>{{ props.node.label }}</span>
       </div>
 
+      <!-- render 成员 label -->
       <div v-if="props.node?.type === '成员'" class="label chengyuan-label">
         <span>{{ props.node.label }}</span>
       </div>
@@ -98,7 +103,7 @@ export default defineComponent({
 
 <style lang="less">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -117,10 +122,12 @@ export default defineComponent({
     }
 
     .root-label {
-      background: lightblue;
+      background: #0078f8;
+      color: white;
     }
 
     .gudong-label {
+      background: #ffe9d9;
       position: relative;
 
       .arrow {

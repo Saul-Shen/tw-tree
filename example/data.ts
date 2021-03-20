@@ -1,3 +1,18 @@
+function createNode(parentid: string, type: string, num: number, others: any) {
+  const arr = [];
+
+  for (let i = 0; i < num; i++) {
+    arr.push({
+      id: `${parentid}-${i}`,
+      type: type,
+      label: type + i,
+      ...others,
+    });
+  }
+
+  return arr;
+}
+
 export const leftTree = {
   id: "1",
   label: "才华有限公司",
@@ -5,90 +20,54 @@ export const leftTree = {
     collapse: false,
     childrenLink: {
       width: "50px",
-      color: "yellow",
     },
   },
   children: [
     {
-      id: "1-1",
+      id: "1-0",
       type: "股东",
       label: "股东1",
       twAttrs: {
         parentLink: {
           width: "100px",
-          color: "red",
         },
         childrenLink: {
           width: "50px",
-          color: "yellow",
+          color: "#ffe9d9",
         },
       },
-      children: [
-        {
-          id: "1-1-1",
-          type: "公司",
-          label: "公司1",
-          per: "50.00%",
-          twAttrs: {
-            collapse: true,
-            parentLink: {
-              width: "100px",
-            },
-          },
-          children: [
-            {
-              id: "1-1-1-1",
-              type: "公司",
-              label: "公司xx",
-            },
-          ],
-        },
-        {
-          id: "1-1-2",
-          type: "公司",
-          label: "公司2",
-          per: "50.00%",
-          twAttrs: {
-            parentLink: {
-              width: "100px",
-            },
+      children: createNode("1-0", "公司", 4, {
+        per: "25.00%",
+        twAttrs: {
+          parentLink: {
+            width: "100px",
+            color: "#ffe9d9",
           },
         },
-      ],
+      }),
     },
     {
-      id: "1-2",
+      id: "1-1",
       type: "股东",
       label: "股东2",
       twAttrs: {
         parentLink: {
           width: "100px",
         },
+        childrenLink: {
+          width: "100px",
+          color: "#DFECE4",
+        },
       },
-      children: [
-        {
-          id: "1-2-1",
-          type: "公司",
-          label: "公司1",
-          per: "50.00%",
-          twAttrs: {
-            parentLink: {
-              width: "100px",
-            },
+      children: createNode("1-1", "公司", 2, {
+        per: "50.00%",
+        twAttrs: {
+          parentLink: {
+            width: "100px",
+            color: "#DFECE4",
           },
         },
-        {
-          id: "1-2-2",
-          type: "公司",
-          label: "公司2",
-          per: "50.00%",
-          twAttrs: {
-            parentLink: {
-              width: "100px",
-            },
-          },
-        },
-      ],
+      }),
     },
   ],
 };
@@ -107,6 +86,11 @@ export const rightTree = {
           id: "2-2",
           type: "成员",
           label: "成员1",
+        },
+        {
+          id: "2-",
+          type: "成员",
+          label: "成员2",
         },
       ],
     },

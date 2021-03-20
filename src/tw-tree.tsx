@@ -14,14 +14,10 @@ const TwTree = defineComponent({
     const { leftTree = {}, rightTree = {} } = this.$props;
 
     const ifShowLeftTree =
-      !leftTree.twAttrs?.collapse &&
-      leftTree.children &&
-      leftTree.children.length > 0;
+      !leftTree.twAttrs?.collapse && leftTree.children?.length > 0;
 
     const ifShowRightTree =
-      !rightTree.twAttrs?.collapse &&
-      rightTree.children &&
-      rightTree.children.length > 0;
+      !rightTree.twAttrs?.collapse && rightTree.children?.length > 0;
 
     const rootLabel = leftTree.label || rightTree.label;
 
