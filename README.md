@@ -1,6 +1,6 @@
 # tw-tree
 
-Two way tree, you can customize label content, link style.
+Two way tree chart, you can customize label content, link style, alse support single way tree chart.
 
 # Example
 
@@ -25,6 +25,22 @@ Only the root node has 'isRoot' attribute and no 'node' attribute.
 </tw-trew>
 ```
 
+# Props
+
+## leftTree
+
+Left tree data, could be null
+
+## rightTree
+
+Right tree data, could be null
+
+# Slots
+
+## label
+
+Label slot
+
 # Interface
 
 ```typescript
@@ -32,7 +48,7 @@ interfase TreeNode {
   // not nessary, but will be useful, the example code shows the details
   id?: string,
 
-  twAttrs: {
+  twAttrs?: {
     // if collapse children
     collapse: boolean,
 
