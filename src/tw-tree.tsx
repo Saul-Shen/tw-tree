@@ -2,7 +2,7 @@ import { defineComponent } from "vue";
 import TwTreeLabel from "./tw-tree-label";
 import TwTreeNode from "./tw-tree-node";
 import TwTreeLink from "./tw-tree-link";
-import { getPaddingStyle } from "./util";
+import { getPadding } from "./util";
 
 const TwTree = defineComponent({
   props: {
@@ -18,14 +18,14 @@ const TwTree = defineComponent({
 
     const rootLabel = leftTree.label || rightTree.label;
 
-    const leftTreeStyle = getPaddingStyle(
+    const leftTreeStyle = getPadding(
       "is-left",
-      leftTree?.twTreeAttrs?.childrenLink?.width
+      leftTree?.twAttrs?.childrenLink?.width
     );
 
-    const rightTreeStyle = getPaddingStyle(
+    const rightTreeStyle = getPadding(
       "is-right",
-      rightTree?.twTreeAttrs?.childrenLink?.width
+      rightTree?.twAttrs?.childrenLink?.width
     );
 
     return (
@@ -34,8 +34,8 @@ const TwTree = defineComponent({
           <div class="is-left" style={leftTreeStyle}>
             <TwTreeLink
               position="is-left"
-              width={leftTree.twTreeAttrs?.childrenLink?.width}
-              color={leftTree.twTreeAttrs?.childrenLink?.color}
+              width={leftTree.twAttrs?.childrenLink?.width}
+              color={leftTree.twAttrs?.childrenLink?.color}
             />
             {leftTree.children.map((node: any) => (
               <TwTreeNode position="is-left" v-slots={this.$slots} {...node} />
@@ -49,8 +49,8 @@ const TwTree = defineComponent({
           <div class="is-right" style={rightTreeStyle}>
             <TwTreeLink
               position="is-right"
-              width={rightTree.twTreeAttrs?.childrenLink?.width}
-              color={rightTree.twTreeAttrs?.childrenLink?.color}
+              width={rightTree.twAttrs?.childrenLink?.width}
+              color={rightTree.twAttrs?.childrenLink?.color}
             />
             {rightTree.children.map((node: any) => (
               <TwTreeNode position="is-right" v-slots={this.$slots} {...node} />

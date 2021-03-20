@@ -1,11 +1,7 @@
-export function getPaddingStyle(postion = "is-left", value = "20px") {
+export function getPadding(postion = "is-left", value = "20px") {
   return postion === "is-left"
-    ? {
-        paddingRight: value,
-      }
-    : {
-        paddingLeft: value,
-      };
+    ? { paddingRight: value }
+    : { paddingLeft: value };
 }
 
 export function cls(...args: any[]) {

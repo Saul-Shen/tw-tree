@@ -40,7 +40,7 @@ export default defineComponent({
   data() {
     const tree1 = {
       label: "才华有限公司",
-      twTreeAttrs: {
+      twAttrs: {
         childrenLink: {
           width: "50px",
           color: "yellow",
@@ -50,7 +50,7 @@ export default defineComponent({
         {
           type: "股东",
           label: "股东1",
-          twTreeAttrs: {
+          twAttrs: {
             parentLink: {
               width: "100px",
               color: "red",
@@ -65,7 +65,7 @@ export default defineComponent({
               type: "公司",
               label: "公司1",
               per: "50.00%",
-              twTreeAttrs: {
+              twAttrs: {
                 parentLink: {
                   width: "100px",
                 },
@@ -75,7 +75,7 @@ export default defineComponent({
               type: "公司",
               label: "公司2",
               per: "50.00%",
-              twTreeAttrs: {
+              twAttrs: {
                 parentLink: {
                   width: "100px",
                 },
@@ -87,7 +87,7 @@ export default defineComponent({
         {
           type: "股东",
           label: "股东1",
-          twTreeAttrs: {
+          twAttrs: {
             parentLink: {
               width: "100px",
             },
@@ -97,7 +97,7 @@ export default defineComponent({
               type: "公司",
               label: "公司1",
               per: "50.00%",
-              twTreeAttrs: {
+              twAttrs: {
                 parentLink: {
                   width: "100px",
                 },
@@ -107,7 +107,7 @@ export default defineComponent({
               type: "公司",
               label: "公司2",
               per: "50.00%",
-              twTreeAttrs: {
+              twAttrs: {
                 parentLink: {
                   width: "100px",
                 },
@@ -124,7 +124,7 @@ export default defineComponent({
         {
           type: "高管",
           label: "高管1",
-          twTreeAttrs: {},
+          twAttrs: {},
           children: [
             {
               type: "成员",
