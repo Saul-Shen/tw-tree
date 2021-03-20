@@ -4,13 +4,13 @@
   justify-content: center;
   background: white;
 
+  // link style
   .left-tree-link {
     position: absolute;
     top: 50%;
     right: 0;
     display: block;
     height: 1px;
-    background: #ddd;
   }
 
   .right-tree-link {
@@ -20,6 +20,46 @@
     display: block;
     height: 1px;
     background: #ddd;
+  }
+
+  // side line style
+  .left-side-line-top {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    right: 0;
+    display: block;
+    width: 1px;
+    height: 50%;
+  }
+
+  .right-side-line-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 1px;
+    height: 50%;
+    background: #ddd;
+  }
+
+  .left-side-line-bottom {
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    right: 0;
+    display: block;
+    width: 1px;
+    height: 50%;
+  }
+
+  .right-side-line-bottom {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    display: block;
+    width: 1px;
+    height: 50%;
   }
 
   .is-right {
@@ -34,32 +74,12 @@
       padding-top: 10px;
       padding-bottom: 10px;
 
-      &:nth-of-type(1) > .line-top {
+      &:nth-of-type(1) > .right-side-line-top {
         width: 0;
       }
 
-      &:last-child > .line-bottom {
+      &:last-child > .right-side-line-bottom {
         width: 0;
-      }
-
-      .line-top {
-        position: absolute;
-        top: 0;
-        left: 0;
-        display: block;
-        width: 1px;
-        height: 50%;
-        background: #ddd;
-      }
-
-      .line-bottom {
-        position: absolute;
-        top: 50%;
-        left: 0;
-        display: block;
-        width: 1px;
-        height: 50%;
-        background: #ddd;
       }
     }
 
@@ -72,18 +92,6 @@
         text-align: center;
         border-radius: 3px;
         box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
-
-        .expand-icon {
-          cursor: pointer;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          width: 15px;
-          height: 15px;
-          border-radius: 50%;
-          border: 1px solid black;
-          margin-left: 5px;
-        }
       }
     }
   }
@@ -116,34 +124,12 @@
       padding-top: 10px;
       padding-bottom: 10px;
 
-      &:nth-of-type(1) > .line-top {
+      &:nth-of-type(1) > .left-side-line-top {
         width: 0;
       }
 
-      &:last-child > .line-bottom {
+      &:last-child > .left-side-line-bottom {
         width: 0;
-      }
-
-      .line-top {
-        position: absolute;
-        top: 0;
-        left: 100%;
-        right: 0;
-        display: block;
-        width: 1px;
-        height: 50%;
-        background: #ddd;
-      }
-
-      .line-bottom {
-        position: absolute;
-        top: 50%;
-        left: 100%;
-        right: 0;
-        display: block;
-        width: 1px;
-        height: 50%;
-        background: #ddd;
       }
     }
 
@@ -157,18 +143,6 @@
         text-align: center;
         border-radius: 3px;
         box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
-
-        .expand-icon {
-          cursor: pointer;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          width: 15px;
-          height: 15px;
-          border-radius: 50%;
-          border: 1px solid black;
-          margin: 0 5px;
-        }
       }
     }
   }

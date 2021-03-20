@@ -1,6 +1,7 @@
 import { defineComponent } from "vue";
 import TwTreeLabel from "./tw-tree-label";
 import TwTreeLink from "./tw-tree-link";
+import TwSideLine from "./tw-side-line";
 import { getPaddingStyle, cls } from "./util";
 
 const TwTreeNode = defineComponent({
@@ -41,19 +42,21 @@ const TwTreeNode = defineComponent({
   render() {
     const { label, children, position, twTreeAttrs } = this.$props;
 
-    const nodeStyle = getPaddingStyle(position, twTreeAttrs?.paddingParent);
+    const parentStyle = getPaddingStyle(
+      position,
+      twTreeAttrs?.parentLink?.width
+    );
 
     const childrenStyle = getPaddingStyle(
       position,
-      twTreeAttrs?.paddingChildren
+      twTreeAttrs?.childrenLink?.width
     );
 
     return (
-      <div class={cls("tree-node", position)} style={nodeStyle}>
-        <span class="line-top" />
-        <span class="line-bottom" />
+      <div class={cls("tree-node", position)} style={parentStyle}>
+        <TwSideLine postion={position} color={twTreeAttrs?.parentLink?.color} />
 
-        <TwTreeLink position={position} width={twTreeAttrs?.paddingParent} />
+        <TwTreeLink position={position} {...twTreeAttrs?.parentLink} />
 
         <TwTreeLabel
           v-slots={this.$slots}
@@ -67,10 +70,7 @@ const TwTreeNode = defineComponent({
 
         {this.ifCanExpand && this.isExpanded && (
           <div class={`tree-children ${position}`} style={childrenStyle}>
-            <TwTreeLink
-              position={position}
-              width={twTreeAttrs?.paddingChildren}
-            />
+            <TwTreeLink position={position} {...twTreeAttrs?.childrenLink} />
 
             {children.map((node: any) => (
               <TwTreeNode v-slots={this.$slots} {...node} position={position} />

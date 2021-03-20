@@ -41,15 +41,24 @@ export default defineComponent({
     const tree1 = {
       label: "才华有限公司",
       twTreeAttrs: {
-        linkColor: "red",
+        childrenLink: {
+          width: "50px",
+          color: "yellow",
+        },
       },
       children: [
         {
           type: "股东",
           label: "股东1",
           twTreeAttrs: {
-            paddingParent: "100px",
-            linkColor: "red",
+            parentLink: {
+              width: "100px",
+              color: "red",
+            },
+            childrenLink: {
+              width: "50px",
+              color: "yellow",
+            },
           },
           children: [
             {
@@ -57,7 +66,9 @@ export default defineComponent({
               label: "公司1",
               per: "50.00%",
               twTreeAttrs: {
-                paddingParent: "100px",
+                parentLink: {
+                  width: "100px",
+                },
               },
             },
             {
@@ -65,7 +76,9 @@ export default defineComponent({
               label: "公司2",
               per: "50.00%",
               twTreeAttrs: {
-                paddingParent: "100px",
+                parentLink: {
+                  width: "100px",
+                },
               },
             },
           ],
@@ -75,7 +88,9 @@ export default defineComponent({
           type: "股东",
           label: "股东1",
           twTreeAttrs: {
-            paddingParent: "100px",
+            parentLink: {
+              width: "100px",
+            },
           },
           children: [
             {
@@ -83,7 +98,9 @@ export default defineComponent({
               label: "公司1",
               per: "50.00%",
               twTreeAttrs: {
-                paddingParent: "100px",
+                parentLink: {
+                  width: "100px",
+                },
               },
             },
             {
@@ -91,7 +108,9 @@ export default defineComponent({
               label: "公司2",
               per: "50.00%",
               twTreeAttrs: {
-                paddingParent: "100px",
+                parentLink: {
+                  width: "100px",
+                },
               },
             },
           ],
