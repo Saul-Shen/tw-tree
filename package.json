@@ -6,18 +6,17 @@
     "serve": "vue-cli-service serve ./example/main.ts",
     "build": "vue-cli-service build"
   },
-  "dependencies": {
-    "core-js": "^3.6.5",
-    "element-plus": "^1.0.2-beta.35",
-    "vue": "^3.0.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-typescript": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "@vue/compiler-sfc": "^3.0.0",
+    "core-js": "^3.6.5",
+    "element-plus": "^1.0.2-beta.35",
     "less": "^3.0.4",
     "less-loader": "^5.0.0",
-    "typescript": "~4.1.5"
+    "typescript": "~4.1.5",
+    "vue": "3.0.7"
   }
 }
