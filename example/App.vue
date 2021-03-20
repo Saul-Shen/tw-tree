@@ -28,7 +28,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import TwTree from "./components/tw-tree";
+import TwTree from "../src";
 
 export default defineComponent({
   name: "App",
