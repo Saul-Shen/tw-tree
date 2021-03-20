@@ -34,7 +34,6 @@ const TwTreeNode = defineComponent({
 
         <TwTreeLabel
           v-slots={this.$slots}
-          label={label}
           node={{ ...this.$props, ...this.$attrs }}
         />
 

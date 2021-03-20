@@ -3,7 +3,7 @@
     <template #label="props">
       <!-- render root label, custom render for different type node  -->
       <div v-if="props.isRoot" class="label root-label">
-        {{ props.label }}
+        {{ leftTree.label }}
       </div>
 
       <!-- render 股东 label -->
