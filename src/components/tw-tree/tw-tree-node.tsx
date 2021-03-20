@@ -20,27 +20,10 @@ const TwTreeNode = defineComponent({
     },
   },
 
-  data() {
-    return {
-      ifCanExpand: false, // 是否可以展开
-      isExpanded: true, // 是否处于展开状态
-    };
-  },
-
-  mounted() {
-    if (this.children.length > 0) {
-      this.ifCanExpand = true;
-    }
-  },
-
-  methods: {
-    onClickExpand() {
-      this.isExpanded = !this.isExpanded;
-    },
-  },
-
   render() {
     const { label, children, position, twTreeAttrs } = this.$props;
+
+    const ifShowChildren = children && children.length > 0;
 
     const parentStyle = getPaddingStyle(
       position,
@@ -62,13 +45,9 @@ const TwTreeNode = defineComponent({
           v-slots={this.$slots}
           label={label}
           node={{ ...this.$props, ...this.$attrs }}
-          isExpanded={this.isExpanded}
-          ifCanExpand={this.ifCanExpand}
-          onClickExpand={this.onClickExpand}
-          position={position}
         />
 
-        {this.ifCanExpand && this.isExpanded && (
+        {ifShowChildren && (
           <div class={`tree-children ${position}`} style={childrenStyle}>
             <TwTreeLink position={position} {...twTreeAttrs?.childrenLink} />
 

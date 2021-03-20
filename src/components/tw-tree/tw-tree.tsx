@@ -43,12 +43,7 @@ const TwTree = defineComponent({
           </div>
         )}
 
-        <TwTreeLabel
-          isRoot
-          position="is-middle"
-          v-slots={this.$slots}
-          label={rootLabel}
-        />
+        <TwTreeLabel isRoot v-slots={this.$slots} label={rootLabel} />
 
         {ifShowRightTree && (
           <div class="is-right" style={rightTreeStyle}>
